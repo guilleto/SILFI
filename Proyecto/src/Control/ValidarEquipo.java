@@ -2,7 +2,6 @@ package Control;
 
 import DAO.EquipoDAO;
 import Entidad.Equipo;
-import java.util.Date;
 
 public class ValidarEquipo {
 
@@ -12,7 +11,7 @@ public class ValidarEquipo {
     public ValidarEquipo() {
     }
 
-    public String verificarEquipo(String id, String nombreEquipo, String descripcion, String labEquipo) {
+    public String verificarEquipo(String id, String nombreEquipo, String descripcion, String labEquipo, String estado) {
         if (!verificarLongitudId(id)) {
             return ("Longitud id incorrecta");
         }       
@@ -25,9 +24,8 @@ public class ValidarEquipo {
             equipo.setId_Equipo(id);
             equipo.setNombre_Equipo(nombreEquipo);
             equipo.setDescripcion_Equipo(descripcion);
-          
             equipo.setLabId_Lab(labEquipo);
-
+            equipo.setEstado(estado);
             if (daoEquipo.crear(equipo) == false) {
                 return "Equipo Invalido";
             }

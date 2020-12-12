@@ -59,7 +59,15 @@ public class Admin_AñadirLaboratorios extends javax.swing.JFrame {
         tfNombre_Lab = new javax.swing.JTextField();
         jcUsuarios = new javax.swing.JComboBox<>();
         jcEdificios = new javax.swing.JComboBox<>();
-        jlFondo3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jlFondo2 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -68,8 +76,9 @@ public class Admin_AñadirLaboratorios extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(600, 600));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(450, 650));
-        jPanel1.setPreferredSize(new java.awt.Dimension(450, 650));
+        jPanel1.setMaximumSize(new java.awt.Dimension(450, 750));
+        jPanel1.setMinimumSize(new java.awt.Dimension(450, 750));
+        jPanel1.setPreferredSize(new java.awt.Dimension(450, 750));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_test_1/Images/boton login.png"))); // NOI18N
@@ -83,7 +92,7 @@ public class Admin_AñadirLaboratorios extends javax.swing.JFrame {
                 btAñadirActionPerformed(evt);
             }
         });
-        jPanel1.add(btAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, 50, 50));
+        jPanel1.add(btAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, 50, 50));
 
         btPaginaPrincipal.setContentAreaFilled(false);
         btPaginaPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -93,26 +102,62 @@ public class Admin_AñadirLaboratorios extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btPaginaPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 140, 50));
-        jPanel1.add(tfId_Lab, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 160, 30));
-        jPanel1.add(tf_Descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 250, 30));
-        jPanel1.add(tfNombre_Lab, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 250, 30));
+        jPanel1.add(tfId_Lab, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 160, 30));
+        jPanel1.add(tf_Descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 250, 30));
+        jPanel1.add(tfNombre_Lab, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 250, 30));
 
         jcUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcUsuariosActionPerformed(evt);
             }
         });
-        jPanel1.add(jcUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 510, 250, 30));
+        jPanel1.add(jcUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 550, 250, 30));
 
         jcEdificios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcEdificiosActionPerformed(evt);
             }
         });
-        jPanel1.add(jcEdificios, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 250, 30));
+        jPanel1.add(jcEdificios, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, 250, 30));
 
-        jlFondo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/añadirlab.png"))); // NOI18N
-        jPanel1.add(jlFondo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 650));
+        jLabel4.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Usuario");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 250, -1));
+
+        jLabel5.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("ID Laboratorio");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 160, -1));
+
+        jLabel6.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Nombre del Laboratorio ");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 250, -1));
+
+        jLabel7.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Descripcion");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 250, -1));
+
+        jLabel8.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Codigo Equipo");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 250, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BAL.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 3, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("AGREGAR LABORATORIO");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 260, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logosilfin.png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 150, 70));
+
+        jlFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mini no tan mini.png"))); // NOI18N
+        jPanel1.add(jlFondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 750));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -288,11 +333,19 @@ public class Admin_AñadirLaboratorios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAñadir;
     private javax.swing.JButton btPaginaPrincipal;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> jcEdificios;
     private javax.swing.JComboBox<String> jcUsuarios;
-    private javax.swing.JLabel jlFondo3;
+    private javax.swing.JLabel jlFondo2;
     private javax.swing.JTextField tfId_Lab;
     private javax.swing.JTextField tfNombre_Lab;
     private javax.swing.JTextField tf_Descripcion;

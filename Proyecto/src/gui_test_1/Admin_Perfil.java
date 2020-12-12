@@ -1,21 +1,11 @@
 package gui_test_1;
 
-import Control.ValidarLogin;
-import Entidad.Usuario;
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
+import DAO.UsuarioDAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class Admin_Perfil extends javax.swing.JFrame {
 
@@ -24,23 +14,60 @@ public class Admin_Perfil extends javax.swing.JFrame {
     static final String DB_USER = "admin";
     static final String DB_PASSWORD = "Ojopescado#4170";
     public String user;
+    public String contraseña;
+    UsuarioDAO usuario = new UsuarioDAO();
+    Connection connection = null;
+    Statement statement = null;
 
     public Admin_Perfil(String user) {
         initComponents();
         this.user = user;
         setLocationRelativeTo(null);
-        //setExtendedState(MAXIMIZED_BOTH);
         String nombreUsuario;
         this.setLocationRelativeTo(null);
         this.setIconImage(new ImageIcon(getClass().getResource("/Images/silunimage.png")).getImage());
         String userNamePerfil = user;
-        System.out.println(userNamePerfil);
-        jlNombrePerfil.setText(user);
 
+        jlNombrePerfil.setText(user);
+        contraseña = usuario.Contraseña(user);
     }
 
     private Admin_Perfil() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    }
+
+    public void confirmar() {
+        int msj = JOptionPane.showConfirmDialog(null, "¿Esta seguro de cambiar la contraseña?");
+        if (msj == JOptionPane.YES_OPTION) {
+            actualizar();
+        }
+        if (msj == JOptionPane.NO_OPTION) {
+        //    tfNuevaContraseña.setText("");
+        }
+        if (msj == JOptionPane.CLOSED_OPTION) {
+            Admin_Menu obj = new Admin_Menu(user);
+            obj.setVisible(true);
+            dispose();
+        }
+    }
+
+    public void actualizar() {
+
+        int resultSet;
+        String sql = "UPDATE USUARIO "
+                + " SET USERNAME = '" + user + "' , "
+             //   + " PASS = '" + tfNuevaContraseña.getText() + "' , "
+                + "' WHERE USERNAME = '" + user
+             //   + "' AND PASS = '" + tfOldContraseña.getText()
+                + "' ;";
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            statement = connection.createStatement();
+            int result = statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(rootPane, "Se ha actualizado la contraseña : " + user + "", "Actualizacion del registro", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "No es posible actualizar el registro"+e, "Error al Actualizar", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -49,11 +76,13 @@ public class Admin_Perfil extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        tfContraseña = new javax.swing.JPasswordField();
         btValidar = new javax.swing.JButton();
         jlNombrePerfil = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jlFondo2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jlFondo3 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -63,10 +92,10 @@ public class Admin_Perfil extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(600, 600));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(450, 650));
-        jPanel1.setPreferredSize(new java.awt.Dimension(450, 650));
+        jPanel1.setMaximumSize(new java.awt.Dimension(450, 750));
+        jPanel1.setMinimumSize(new java.awt.Dimension(450, 750));
+        jPanel1.setPreferredSize(new java.awt.Dimension(450, 750));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(tfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 250, 30));
 
         btValidar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_test_1/Images/boton login.png"))); // NOI18N
         btValidar.setBorder(null);
@@ -78,12 +107,14 @@ public class Admin_Perfil extends javax.swing.JFrame {
                 btValidarActionPerformed(evt);
             }
         });
-        jPanel1.add(btValidar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 50, 50));
+        jPanel1.add(btValidar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, 50, 50));
 
         jlNombrePerfil.setFont(new java.awt.Font("Ancizar Sans", 3, 24)); // NOI18N
         jlNombrePerfil.setForeground(new java.awt.Color(255, 255, 255));
+        jlNombrePerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlNombrePerfil.setText("Andres L.");
-        jPanel1.add(jlNombrePerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, -1, -1));
+        jlNombrePerfil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(jlNombrePerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 200, -1));
 
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -91,11 +122,21 @@ public class Admin_Perfil extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 140, 50));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 140, 50));
 
-        jlFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cambiarcontraseña.png"))); // NOI18N
-        jlFondo2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(jlFondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 650));
+        jLabel3.setFont(new java.awt.Font("Calibri", 3, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("MI PERFIL");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 100, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logosilfin.png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 150, 70));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/usuarioslogo.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 260, 240));
+
+        jlFondo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mini no tan mini.png"))); // NOI18N
+        jPanel1.add(jlFondo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 750));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,6 +153,12 @@ public class Admin_Perfil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValidarActionPerformed
+       // if (contraseña.equals(tfOldContraseña.getText())) {
+       //     confirmar();
+      //  } else {
+           // JOptionPane.showMessageDialog(rootPane, "Contraseña Incorrecta", "Error al cambiar Contraseña", JOptionPane.ERROR_MESSAGE);
+      //  }
+
         Admin_Menu obj = new Admin_Menu(user);
         obj.setVisible(true);
         this.dispose();
@@ -166,10 +213,12 @@ public class Admin_Perfil extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btValidar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel jlFondo2;
+    private javax.swing.JLabel jlFondo3;
     private javax.swing.JLabel jlNombrePerfil;
-    private javax.swing.JPasswordField tfContraseña;
     // End of variables declaration//GEN-END:variables
 }

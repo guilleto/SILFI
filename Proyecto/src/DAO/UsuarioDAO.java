@@ -16,6 +16,7 @@ public class UsuarioDAO {
     static final String DB_DRV = "com.mysql.jdbc.Driver";
     static final String DB_USER = "admin";
     static final String DB_PASSWORD = "Ojopescado#4170";
+    String password;
 
     public boolean crear(Usuario object) {
         Connection connection = null;
@@ -132,6 +133,30 @@ public class UsuarioDAO {
         }
     }
 
+    public String Contraseña(String user) {
+        Connection connection = null;
+        Statement statement = null;
+        String sqlBusqueda = "SELECT * FROM loginapp.USUARIO WHERE Username = '" + user + "'";
+       
+        int resultSet;
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sqlBusqueda);
+
+            while (result.next()) {
+                password = (result.getString("PASS"));
+
+            }
+            result.close();
+        } catch (SQLException ex) {
+            System.out.println("Error en SQL" + ex);
+            JOptionPane.showMessageDialog(null, "Error al encontrar Username", "Error Username", JOptionPane.ERROR_MESSAGE);
+            //return false;
+        }
+        return password;
+    }
+
     public DefaultComboBoxModel llenar_Combo() {
         Connection connection = null;
         Statement statement = null;
@@ -182,6 +207,32 @@ public class UsuarioDAO {
             //return false;
         }
         return listaEdificios;
+    }
+
+    public DefaultComboBoxModel llenar_ComboEquipo() {
+        Connection connection = null;
+        Statement statement = null;
+        DefaultComboBoxModel listaEquipos = new DefaultComboBoxModel();
+        listaEquipos.addElement("Seleccione Equipo");
+        String sqlBusqueda = "SELECT * FROM loginapp.EQUIPO ";
+
+        int resultSet;
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sqlBusqueda);
+
+            while (result.next()) {
+                listaEquipos.addElement(result.getString("ID_EQUIPO"));
+
+            }
+            result.close();
+        } catch (SQLException ex) {
+            System.out.println("Error en SQL" + ex);
+            JOptionPane.showMessageDialog(null, "Error al encontrar Edificio", "Error Edificio", JOptionPane.ERROR_MESSAGE);
+            //return false;
+        }
+        return listaEquipos;
     }
 
     public DefaultComboBoxModel llenar_ComboActualizar(String usuario) {

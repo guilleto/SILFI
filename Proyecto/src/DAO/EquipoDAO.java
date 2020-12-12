@@ -29,8 +29,9 @@ public class EquipoDAO {
             resultSet = -1;
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             statement = connection.createStatement();
-            resultSet = statement.executeUpdate("INSERT INTO EQUIPO( `ID_EQUIPO`,`NOMBRE_EQUIPO`, `DESCRIPCION_EQUIPO`,  `LABId_LAB`) VALUES (\""
-                    + object.getId_Equipo() + "\",\"" + object.getNombre_Equipo() + "\",\"" + object.getDescripcion_Equipo() + "\",\"" + object.getLabId_Lab() + "\")");
+            resultSet = statement.executeUpdate("INSERT INTO EQUIPO( `ID_EQUIPO`,`NOMBRE_EQUIPO`, `DESCRIPCION_EQUIPO`,  `LABId_LAB`, `ESTADO`) VALUES (\""
+                    + object.getId_Equipo() + "\",\"" + object.getNombre_Equipo() + "\",\"" + object.getDescripcion_Equipo() + "\",\"" + object.getLabId_Lab()
+                    + "\",\"" + object.getEstado() + "\")");
             return resultSet > 0;
         } catch (SQLException SQLIntegrityConstraintViolationException) {
 
@@ -142,6 +143,40 @@ public class EquipoDAO {
         }
     }
 
+    public DefaultComboBoxModel llenar_ComboActualizarEquipo(String equipo) {
+        Connection connection = null;
+        Statement statement = null;
+        DefaultComboBoxModel listaEquipos = new DefaultComboBoxModel();
+        listaEquipos.addElement(equipo);
+
+        String sqlBusqueda = "SELECT * FROM loginapp.EQUIPO WHERE ID_EQUIPO != '" + equipo + "'";
+
+        int resultSet;
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sqlBusqueda);
+
+            while (result.next()) {
+                listaEquipos.addElement(result.getString("ID_EQUIPO"));
+
+            }
+            result.close();
+        } catch (SQLException ex) {
+            System.out.println("Error en SQL" + ex);
+            JOptionPane.showMessageDialog(null, "Error al encontrar Equipo", "Error Equipo", JOptionPane.ERROR_MESSAGE);
+            //return false;
+        }
+        return listaEquipos;
+    }
+
+    public DefaultComboBoxModel llenar_ComboEstadoEquipo(String equipo) {
+
+        DefaultComboBoxModel listaEquipos = new DefaultComboBoxModel();
+        listaEquipos.addElement(equipo);
+        return listaEquipos;
+    }
+
     public DefaultComboBoxModel llenar_Combo() {
         Connection connection = null;
         Statement statement = null;
@@ -162,30 +197,41 @@ public class EquipoDAO {
             result.close();
         } catch (SQLException ex) {
             System.out.println("Error en SQL" + ex);
-           JOptionPane.showMessageDialog(null, "Error al encontrar la placa del equipo", "Error Id Equipos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al encontrar la placa del equipo", "Error Id Equipos", JOptionPane.ERROR_MESSAGE);
             //return false;
         }
         return listaLabs;
     }
-    
-        public DefaultComboBoxModel llenar_Busqueda() {
-       
+
+    public DefaultComboBoxModel llenar_Busqueda() {
+
         DefaultComboBoxModel listaLabs = new DefaultComboBoxModel();
         listaLabs.addElement("Seleccione una opcion");
         listaLabs.addElement("Placa");
         listaLabs.addElement("Nombre");
         listaLabs.addElement("Descripcion");
         listaLabs.addElement("Laboratorio");
-     
+        listaLabs.addElement("Estado");
+        listaLabs.addElement("Descripcion Estado");
+
         return listaLabs;
     }
-    
-    public DefaultTableModel mostrar(){
+
+    public DefaultComboBoxModel llenar_BusquedaEstado() {
+
+        DefaultComboBoxModel listaEstado = new DefaultComboBoxModel();
+        listaEstado.addElement("Activo");
+        listaEstado.addElement("Inactivo");
+        listaEstado.addElement("Suspendido");
+
+        return listaEstado;
+    }
+
+    public DefaultTableModel mostrar() {
 
         String sql = "SELECT * FROM loginapp.EQUIPO";
         DefaultTableModel model = new DefaultTableModel();
-  
-        
+
         String[] dato = new String[6];
 
         try {
@@ -194,7 +240,7 @@ public class EquipoDAO {
             ResultSet result = statement.executeQuery(sql);
             model.getDataVector().removeAllElements();
             while (result.next()) {
-           
+
                 dato[0] = result.getString(1);
                 dato[1] = result.getString(2);
                 dato[2] = result.getString(3);
@@ -203,7 +249,7 @@ public class EquipoDAO {
                 model.addRow(dato);
             }
         } catch (Exception e) {
-        }   
-    return model;
+        }
+        return model;
     }
 }

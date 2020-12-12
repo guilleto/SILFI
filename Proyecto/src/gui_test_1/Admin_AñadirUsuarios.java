@@ -50,7 +50,14 @@ public class Admin_AñadirUsuarios extends javax.swing.JFrame {
         tfUsuario = new javax.swing.JTextField();
         rbtAdmin = new javax.swing.JRadioButton();
         rbtFuncionario = new javax.swing.JRadioButton();
-        jlFondo3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jlFondo4 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -59,9 +66,9 @@ public class Admin_AñadirUsuarios extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(600, 600));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMaximumSize(new java.awt.Dimension(450, 650));
-        jPanel1.setMinimumSize(new java.awt.Dimension(450, 650));
-        jPanel1.setPreferredSize(new java.awt.Dimension(450, 650));
+        jPanel1.setMaximumSize(new java.awt.Dimension(450, 750));
+        jPanel1.setMinimumSize(new java.awt.Dimension(450, 750));
+        jPanel1.setPreferredSize(new java.awt.Dimension(450, 750));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_test_1/Images/boton login.png"))); // NOI18N
@@ -75,7 +82,7 @@ public class Admin_AñadirUsuarios extends javax.swing.JFrame {
                 btAñadirActionPerformed(evt);
             }
         });
-        jPanel1.add(btAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, 50, 50));
+        jPanel1.add(btAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, 50, 50));
 
         btPaginaPrincipal.setContentAreaFilled(false);
         btPaginaPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -84,9 +91,9 @@ public class Admin_AñadirUsuarios extends javax.swing.JFrame {
                 btPaginaPrincipalActionPerformed(evt);
             }
         });
-        jPanel1.add(btPaginaPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 140, 50));
-        jPanel1.add(tfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 210, 30));
-        jPanel1.add(tfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 240, 30));
+        jPanel1.add(btPaginaPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 140, 50));
+        jPanel1.add(tfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 210, 30));
+        jPanel1.add(tfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 240, 30));
 
         Usuarios.add(rbtAdmin);
         rbtAdmin.setContentAreaFilled(false);
@@ -96,7 +103,7 @@ public class Admin_AñadirUsuarios extends javax.swing.JFrame {
                 rbtAdminActionPerformed(evt);
             }
         });
-        jPanel1.add(rbtAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 20, 60));
+        jPanel1.add(rbtAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 20, 60));
 
         Usuarios.add(rbtFuncionario);
         rbtFuncionario.setContentAreaFilled(false);
@@ -106,10 +113,41 @@ public class Admin_AñadirUsuarios extends javax.swing.JFrame {
                 rbtFuncionarioActionPerformed(evt);
             }
         });
-        jPanel1.add(rbtFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 20, 40));
+        jPanel1.add(rbtFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 20, 40));
 
-        jlFondo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/perfilagregar ususario.png"))); // NOI18N
-        jPanel1.add(jlFondo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 650));
+        jLabel8.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Funcionario");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 160, -1));
+
+        jLabel7.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Administrador");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, 160, -1));
+
+        jLabel6.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Contraseña");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 160, -1));
+
+        jLabel5.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Usuario");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 160, -1));
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 3, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("AGREGAR USUARIO");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 210, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/agregar usuario logo.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logosilfin.png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 150, 70));
+
+        jlFondo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mini no tan mini.png"))); // NOI18N
+        jPanel1.add(jlFondo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 750));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -476,9 +514,16 @@ public class Admin_AñadirUsuarios extends javax.swing.JFrame {
     private javax.swing.ButtonGroup Usuarios;
     private javax.swing.JButton btAñadir;
     private javax.swing.JButton btPaginaPrincipal;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel jlFondo3;
+    private javax.swing.JLabel jlFondo4;
     private javax.swing.JRadioButton rbtAdmin;
     private javax.swing.JRadioButton rbtFuncionario;
     private javax.swing.JTextField tfContraseña;

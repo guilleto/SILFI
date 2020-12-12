@@ -5,19 +5,8 @@
  */
 package gui_test_1;
 
-import Control.ValidarLogin;
-import Entidad.Usuario;
-import gui_test_1.Login;
-import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.Image;
-import static java.awt.Label.CENTER;
-import java.awt.Toolkit;
-import java.beans.Statement;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
 
 public class Admin_ListaMantenimientos extends javax.swing.JFrame {
 

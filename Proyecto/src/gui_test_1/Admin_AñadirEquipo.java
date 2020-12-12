@@ -53,7 +53,14 @@ public class Admin_AñadirEquipo extends javax.swing.JFrame {
         tfNombre_Equipo = new javax.swing.JTextField();
         tf_Descripcion = new javax.swing.JTextField();
         jcLaboratorios = new javax.swing.JComboBox<>();
-        jlFondo1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jlFondo2 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -62,8 +69,9 @@ public class Admin_AñadirEquipo extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(600, 600));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(450, 650));
-        jPanel1.setPreferredSize(new java.awt.Dimension(450, 650));
+        jPanel1.setMaximumSize(new java.awt.Dimension(450, 750));
+        jPanel1.setMinimumSize(new java.awt.Dimension(450, 750));
+        jPanel1.setPreferredSize(new java.awt.Dimension(450, 750));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_test_1/Images/boton login.png"))); // NOI18N
@@ -77,7 +85,7 @@ public class Admin_AñadirEquipo extends javax.swing.JFrame {
                 btAñadirActionPerformed(evt);
             }
         });
-        jPanel1.add(btAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 540, 50, 50));
+        jPanel1.add(btAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, 50, 50));
 
         btAtras.setContentAreaFilled(false);
         btAtras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -86,7 +94,7 @@ public class Admin_AñadirEquipo extends javax.swing.JFrame {
                 btAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(btAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 140, 50));
+        jPanel1.add(btAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 140, 50));
         jPanel1.add(tfId_Equipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 170, 30));
         jPanel1.add(tfNombre_Equipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 290, 30));
         jPanel1.add(tf_Descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 290, 30));
@@ -98,8 +106,39 @@ public class Admin_AñadirEquipo extends javax.swing.JFrame {
         });
         jPanel1.add(jcLaboratorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, 290, 30));
 
-        jlFondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/añadirequipo.png"))); // NOI18N
-        jPanel1.add(jlFondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 650));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Botondeagregarequipo (2).png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Laboratorio");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 290, -1));
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 3, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("AGREGAR EQUIPO");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 190, -1));
+
+        jLabel4.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("ID EQUIPO");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 170, -1));
+
+        jLabel5.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Nombre");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 290, -1));
+
+        jLabel6.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Descripcion");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 290, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logosilfin.png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 150, 70));
+
+        jlFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mini no tan mini.png"))); // NOI18N
+        jPanel1.add(jlFondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 750));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,10 +160,10 @@ public class Admin_AñadirEquipo extends javax.swing.JFrame {
         String descripcion = tf_Descripcion.getText();
 
         String lab = (String) jcLaboratorios.getSelectedItem();
-        //System.out.println(lab);
+        String estado = "Activo";
         String Retorno = null;
         ValidarEquipo validar = new ValidarEquipo();
-        Retorno = validar.verificarEquipo(id, nombre, descripcion, lab);
+        Retorno = validar.verificarEquipo(id, nombre, descripcion, lab, estado);
         if (lab.equals("Seleccione la id del Laboratorio")) {
             JOptionPane.showMessageDialog(rootPane, "Laboratorio Vacio", "Equipo Invalido", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -146,9 +185,6 @@ public class Admin_AñadirEquipo extends javax.swing.JFrame {
                 obj.setVisible(true);
                 this.dispose();
             }
-//        tfId_Equipo.setText("");
-//        tfNombre_Equipo.setText("");
-//        tf_Descripcion.setText("");
 
         }
 
@@ -230,10 +266,17 @@ public class Admin_AñadirEquipo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAtras;
     private javax.swing.JButton btAñadir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> jcLaboratorios;
-    private javax.swing.JLabel jlFondo1;
+    private javax.swing.JLabel jlFondo2;
     private javax.swing.JTextField tfId_Equipo;
     private javax.swing.JTextField tfNombre_Equipo;
     private javax.swing.JTextField tf_Descripcion;

@@ -156,7 +156,10 @@ public class Admin_Labs extends javax.swing.JFrame {
         btLista = new javax.swing.JButton();
         btBuscar = new javax.swing.JButton();
         jcBuscar = new javax.swing.JComboBox<>();
-        jlFondo2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -188,7 +191,7 @@ public class Admin_Labs extends javax.swing.JFrame {
                 btEditarActionPerformed(evt);
             }
         });
-        jPanel1.add(btEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 160, 40));
+        jPanel1.add(btEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 150, 160, 40));
 
         btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BDD.png"))); // NOI18N
         btEliminar.setContentAreaFilled(false);
@@ -198,7 +201,7 @@ public class Admin_Labs extends javax.swing.JFrame {
                 btEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 160, 50));
+        jPanel1.add(btEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 190, 160, 50));
 
         btAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BAL.png"))); // NOI18N
         btAñadir.setContentAreaFilled(false);
@@ -208,7 +211,7 @@ public class Admin_Labs extends javax.swing.JFrame {
                 btAñadirActionPerformed(evt);
             }
         });
-        jPanel1.add(btAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 110, 140));
+        jPanel1.add(btAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 110, 140));
 
         jtTablaLab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -226,14 +229,14 @@ public class Admin_Labs extends javax.swing.JFrame {
         jtTablaLab.setSelectionBackground(new java.awt.Color(11, 55, 68));
         jScrollPane2.setViewportView(jtTablaLab);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 800, 260));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 800, 260));
 
         tfLabs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfLabsActionPerformed(evt);
             }
         });
-        jPanel1.add(tfLabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 210, 30));
+        jPanel1.add(tfLabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 210, 30));
 
         btLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Botondelista.png"))); // NOI18N
         btLista.setContentAreaFilled(false);
@@ -244,7 +247,7 @@ public class Admin_Labs extends javax.swing.JFrame {
                 btListaActionPerformed(evt);
             }
         });
-        jPanel1.add(btLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 150, 40));
+        jPanel1.add(btLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 150, 40));
 
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/botondebusqueda.png"))); // NOI18N
         btBuscar.setContentAreaFilled(false);
@@ -255,18 +258,30 @@ public class Admin_Labs extends javax.swing.JFrame {
                 btBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 50, 50));
+        jPanel1.add(btBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 50, 50));
 
         jcBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jcBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 210, 30));
+        jPanel1.add(jcBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 210, 30));
 
-        jlFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pestañalab.png"))); // NOI18N
-        jlFondo2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(jlFondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 650));
+        jLabel3.setFont(new java.awt.Font("Calibri", 3, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("LABORATORIOS");
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, 170, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logolabs.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, 130));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logosilfin.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SILUNAPPBACKGROUND1.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 650));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -583,11 +598,14 @@ public class Admin_Labs extends javax.swing.JFrame {
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton btLista;
     private javax.swing.JButton btPaginaPrincipal;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> jcBuscar;
-    private javax.swing.JLabel jlFondo2;
     private javax.swing.JTable jtTablaLab;
     private javax.swing.JTextField tfLabs;
     // End of variables declaration//GEN-END:variables

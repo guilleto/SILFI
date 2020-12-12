@@ -27,6 +27,10 @@ public class Admin_Usuarios extends javax.swing.JFrame {
     public String user;
     Connection connection = null;
     Statement statement = null;
+    public String username;
+    public String pass;
+    public int adminUser;
+    String[] dato = new String[6];
 
     public Admin_Usuarios(String user) {
         initComponents();
@@ -43,7 +47,7 @@ public class Admin_Usuarios extends javax.swing.JFrame {
         model.addColumn("CONTRASEÑA");
 
         jtTablaUser.setModel(model);
-        String[] dato = new String[4];
+        dato = new String[4];
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             statement = connection.createStatement();
@@ -66,7 +70,7 @@ public class Admin_Usuarios extends javax.swing.JFrame {
     public void todosElementos() {
         String sql = "SELECT *  FROM loginapp.USUARIO ";
         tfUsuarios.setText("");
-        String[] dato = new String[6];
+        dato = new String[6];
 
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -78,7 +82,7 @@ public class Admin_Usuarios extends javax.swing.JFrame {
                 dato[1] = result.getString(2);
                 dato[2] = result.getString(3);
                 dato[3] = result.getString(4);
-               
+
                 model.addRow(dato);
             }
         } catch (Exception e) {
@@ -102,7 +106,41 @@ public class Admin_Usuarios extends javax.swing.JFrame {
                 todosElementos();
                 fila = -1;
             } catch (Exception e) {
-                   JOptionPane.showMessageDialog(rootPane, "No es posible eliminar el registro", "Error al eliminar", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "No es posible eliminar el registro", "Error al eliminar", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+
+    }
+
+    public void actualizar() {
+        int fila = jtTablaUser.getSelectedRow();
+        System.out.println(fila);
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Dato vacio", "Dato Incorrecto", JOptionPane.ERROR_MESSAGE);
+        } else {
+            username = jtTablaUser.getValueAt(fila, 1).toString();
+            pass = jtTablaUser.getValueAt(fila, 2).toString();
+
+            String sql = "SELECT ADMINUSER  FROM loginapp.USUARIO WHERE USERNAME = '" + username + "' AND PASS ='" + pass + "'";
+
+            Integer[] datoAdmin = new Integer[6];
+
+            try {
+                connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+                statement = connection.createStatement();
+                ResultSet result = statement.executeQuery(sql);
+
+                while (result.next()) {
+
+                    datoAdmin[0] = result.getInt(1);
+
+                }
+                adminUser = datoAdmin[0];
+                System.out.println(username + pass + adminUser);
+                Admin_ActualizarUsuarios obj = new Admin_ActualizarUsuarios(user, username, pass, adminUser);
+                obj.setVisible(true);
+            } catch (Exception e) {
             }
 
         }
@@ -124,7 +162,12 @@ public class Admin_Usuarios extends javax.swing.JFrame {
         jtTablaUser = new javax.swing.JTable();
         btAñadir = new javax.swing.JButton();
         btAñadir2 = new javax.swing.JButton();
-        jlFondo1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -136,7 +179,7 @@ public class Admin_Usuarios extends javax.swing.JFrame {
         jPanel1.setMaximumSize(new java.awt.Dimension(900, 650));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 800));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(tfUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 160, 30));
+        jPanel1.add(tfUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 160, 30));
 
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -151,6 +194,11 @@ public class Admin_Usuarios extends javax.swing.JFrame {
         btEditar.setContentAreaFilled(false);
         btEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btEditar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BDEPUSH.png"))); // NOI18N
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 160, 40));
 
         btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BDD.png"))); // NOI18N
@@ -173,7 +221,7 @@ public class Admin_Usuarios extends javax.swing.JFrame {
                 btBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 50, 50));
+        jPanel1.add(btBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 50, 50));
 
         jtTablaUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -190,7 +238,7 @@ public class Admin_Usuarios extends javax.swing.JFrame {
         jtTablaUser.setMinimumSize(new java.awt.Dimension(300, 750));
         jScrollPane2.setViewportView(jtTablaUser);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 760, 310));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 760, 240));
 
         btAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Botondeagregarusuario.png"))); // NOI18N
         btAñadir.setContentAreaFilled(false);
@@ -201,7 +249,7 @@ public class Admin_Usuarios extends javax.swing.JFrame {
                 btAñadirActionPerformed(evt);
             }
         });
-        jPanel1.add(btAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 110, 140));
+        jPanel1.add(btAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 110, 140));
 
         btAñadir2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Botondelista.png"))); // NOI18N
         btAñadir2.setContentAreaFilled(false);
@@ -212,10 +260,31 @@ public class Admin_Usuarios extends javax.swing.JFrame {
                 btAñadir2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btAñadir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 150, 40));
+        jPanel1.add(btAñadir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 150, 40));
 
-        jlFondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Administradordeusuarios.png"))); // NOI18N
-        jPanel1.add(jlFondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 650));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/12345.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 110, 100));
+
+        jLabel6.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Código de Usuario");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 150, 30));
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 3, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("ADMINISTRADOR DE USUARIOS");
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, 330, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logosilfin.png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 150, 70));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logosilfin.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SILUNAPPBACKGROUND1.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 650));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -301,8 +370,28 @@ public class Admin_Usuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btAñadir2ActionPerformed
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
-        eliminar();        // TODO add your handling code here:
+ int msj = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar el registro?");
+
+        if (msj == JOptionPane.YES_OPTION) {
+            eliminar();
+            tfUsuarios.setText("");
+
+        }
+        if (msj == JOptionPane.NO_OPTION) {
+
+            tfUsuarios.setText("");
+
+        }
+        if (msj == JOptionPane.CLOSED_OPTION) {
+
+            tfUsuarios.setText("");
+
+        }               // TODO add your handling code here:
     }//GEN-LAST:event_btEliminarActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        actualizar();        // TODO add your handling code here:
+    }//GEN-LAST:event_btEditarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -470,10 +559,15 @@ public class Admin_Usuarios extends javax.swing.JFrame {
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel jlFondo1;
     private javax.swing.JTable jtTablaUser;
     private javax.swing.JTextField tfUsuarios;
     // End of variables declaration//GEN-END:variables

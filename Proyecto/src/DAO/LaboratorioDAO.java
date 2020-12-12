@@ -28,7 +28,7 @@ public class LaboratorioDAO {
             statement = connection.createStatement();
             resultSet = statement.executeUpdate("INSERT INTO LAB( `ID_LAB`,`NOMBRE_LAB`, `DESCRIPCION_LAB`,`EDIFICIOId_Edificio`,`USUARIOUsername`) VALUES (\""
                     + object.getId_Lab() + "\",\"" + object.getNombre_Lab() + "\",\"" + object.getDescripcion_Lab() + "\",\"" + object.getEdificioId_Edificio() + "\",\""
-                    + object.getUsuarioId_Usuario()+ "\")");
+                    + object.getUsuarioId_Usuario() + "\")");
             return resultSet > 0;
         } catch (SQLException SQLIntegrityConstraintViolationException) {
 
@@ -182,5 +182,54 @@ public class LaboratorioDAO {
         listaLabs.addElement("Usuario");
 
         return listaLabs;
+    }
+
+    public DefaultComboBoxModel llenar_ComboActualizar(String lab) {
+        Connection connection = null;
+        Statement statement = null;
+        DefaultComboBoxModel listaUsuarios = new DefaultComboBoxModel();
+        listaUsuarios.addElement(lab);
+
+        String sqlBusqueda = "SELECT * FROM loginapp.EQUIPO WHERE LABID_LAB != '" + lab + "'";
+
+        int resultSet;
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sqlBusqueda);
+
+            while (result.next()) {
+                listaUsuarios.addElement(result.getString("LABID_LAB"));
+
+            }
+            result.close();
+        } catch (SQLException ex) {
+            System.out.println("Error en SQL" + ex);
+            JOptionPane.showMessageDialog(null, "Error al encontrar Laboratorio", "Error Laboratorio", JOptionPane.ERROR_MESSAGE);
+            //return false;
+        }
+        return listaUsuarios;
+    }
+
+    public DefaultComboBoxModel llenar_ComboOldEstado(String estado) {
+
+        DefaultComboBoxModel listaEstado = new DefaultComboBoxModel();
+        if (estado.equals("Activo")) {
+            listaEstado.addElement("Activo");
+            listaEstado.addElement("Inactivo");
+            listaEstado.addElement("Suspendido");
+        }
+        if (estado.equals("Inactivo")) {
+            listaEstado.addElement("Inactivo");
+            listaEstado.addElement("Activo");
+            listaEstado.addElement("Suspendido");
+        }
+        if (estado.equals("Suspendido")) {
+            listaEstado.addElement("Suspendido");
+            listaEstado.addElement("Inactivo");
+            listaEstado.addElement("Activo");
+        }
+
+        return listaEstado;
     }
 }
